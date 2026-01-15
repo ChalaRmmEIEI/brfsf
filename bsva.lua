@@ -4200,6 +4200,15 @@ local function createBlur(distance: number?)
 		end
 	end
 
+	local function onChange(rbx)
+		local offset = getOffset()
+		local size = rbx.AbsoluteSize - Vector2.new(offset, offset)
+		local position = rbx.AbsolutePosition + Vector2.new(offset / 2, offset / 2)
+
+		updatePositions(size, position)
+		task.spawn(render)
+	end
+
 	local function renderOnChange()
 		local camera = workspace.CurrentCamera
 
@@ -4309,8 +4318,8 @@ return function(self)
 
 		create("TextBox")({
 			Name = "Field",
-			AutomaticSize = Enum.AutomaticSize.X,
-			Size = UDim2.fromOffset(0, 0),
+			AutomaticSize = Enum.AutomaticSize.XY,
+			Size = UDim2.fromOffset(138, 0),
 			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 			BackgroundTransparency = 1,
 			BorderColor3 = Color3.fromRGB(0, 0, 0),
@@ -9653,7 +9662,7 @@ local creator = __DIST.load('d')
 				BorderSizePixel = 0,
 				AutomaticCanvasSize = Enum.AutomaticSize.Y,
 				CanvasSize = UDim2.new(),
-				Size = UDim2.new(0, 0, 0, 200),
+				Size = UDim2.new(0, 300, 0, 200), -- Wide default
 				ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0),
 				ScrollBarImageTransparency = 0.5,
 				ScrollBarThickness = 3,
