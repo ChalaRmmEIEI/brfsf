@@ -3878,10 +3878,10 @@ return {
 
 		SwitchAccent = color4("478CF6", 100),
 
-		Selection = color4("E60852", 100), -- 007AFF
-		SelectionStroke = color4("E60852", 60),
+		Selection = color4("7F00FF", 100), -- Dark Purple
+		SelectionStroke = color4("7F00FF", 60),
 
-		SelectionFocused = color4("E60852", 100),
+		SelectionFocused = color4("7F00FF", 100),
 		SelectionFocusedAccent = color4("FFFFFF", 85),
 
 		Sidebar = color4("202023", 84),
@@ -4200,15 +4200,6 @@ local function createBlur(distance: number?)
 		end
 	end
 
-	local function onChange(rbx)
-		local offset = getOffset()
-		local size = rbx.AbsoluteSize - Vector2.new(offset, offset)
-		local position = rbx.AbsolutePosition + Vector2.new(offset / 2, offset / 2)
-
-		updatePositions(size, position)
-		task.spawn(render)
-	end
-
 	local function renderOnChange()
 		local camera = workspace.CurrentCamera
 
@@ -4318,8 +4309,8 @@ return function(self)
 
 		create("TextBox")({
 			Name = "Field",
-			AutomaticSize = Enum.AutomaticSize.XY,
-			Size = UDim2.fromOffset(138, 0),
+			AutomaticSize = Enum.AutomaticSize.X,
+			Size = UDim2.fromOffset(0, 0),
 			BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 			BackgroundTransparency = 1,
 			BorderColor3 = Color3.fromRGB(0, 0, 0),
