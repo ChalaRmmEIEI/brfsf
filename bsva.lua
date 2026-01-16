@@ -3850,14 +3850,14 @@ end
 --// Initialize
 return {
 	Text = {
-		Primary = color4("FFFFFF", 85),
-		Secondary = color4("FFFFFF", 55),
-		Tertiary = color4("FFFFFF", 25),
-		Quaternary = color4("FFFFFF", 10),
-		Quinary = color4("FFFFFF", 5),
+		Primary = color4("000000", 85),
+		Secondary = color4("000000", 50),
+		Tertiary = color4("000000", 25),
+		Quaternary = color4("000000", 10),
+		Quinary = color4("000000", 5),
 
 		SelectionPrimary = color4("FFFFFF", 100),
-		PrimaryAccent = color4("FFFFFF", 38),
+		PrimaryAccent = color4("4D4D4D", 100),
 	},
 
 	Accents = {
@@ -3865,41 +3865,41 @@ return {
 	},
 
 	Controls = {
-		Background = color4("1C1C1E", 100),
+		Background = color4("FFFFFF", 100),
 
-		View = color4("1F1F21", 100),
+		View = color4("FCFCFC", 100),
 		ViewBorder = color4("FFFFFF", 5),
 
 		WindowControlIcon = color4("000000", 50),
-		WindowControlStroke = color4("FFFFFF", 10),
+		WindowControlStroke = color4("000000", 20),
 		Exit = color4("FF5F57", 100),
 		Minimize = color4("FEBC2E", 100),
 		Zoom = color4("28C840", 100),
 
 		SwitchAccent = color4("478CF6", 100),
 
-		Selection = color4("7F00FF", 100), -- Dark Purple
-		SelectionStroke = color4("7F00FF", 60),
+		Selection = color4("7F00FF", 100), -- Dark Purple (User Preference)
+		SelectionStroke = color4("7F00FF", 60), -- Dark Purple
 
-		SelectionFocused = color4("7F00FF", 100),
+		SelectionFocused = color4("7F00FF", 100), -- Dark Purple
 		SelectionFocusedAccent = color4("FFFFFF", 85),
 
-		Sidebar = color4("202023", 84),
+		Sidebar = color4("EAEAEA", 84),
 		Separator = {
-			Background = color4("000000", 50),
-			Shadow = color4("FFFFFF", 0),
+			Background = color4("000000", 18),
+			Shadow = color4("000000", 10),
 		},
 
-		Titlebar = color4("363636", 100),
+		Titlebar = color4("EEEEEE", 100),
 		TitlebarShadow = {
-			Background = color4("000000", 0),
+			Background = color4("EAEAEA", 25),
 			Color = value(ColorSequence.new({
-				ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
 			})),
 			Transparency = value(NumberSequence.new({
-				NumberSequenceKeypoint.new(0, 0.5),
-				NumberSequenceKeypoint.new(1, 1),
+				NumberSequenceKeypoint.new(0, 0.35),
+				NumberSequenceKeypoint.new(1, 0.35),
 			})),
 		},
 
@@ -3918,32 +3918,31 @@ return {
 		},
 
 		Slider = {
-			Track = color4("2C2C2E", 100),
-			TrackEffects = color4("000000", 10),
-			TrackFill = color4("478CF6", 100),
+			Track = color4("000000", 5),
+			TrackEffects = color4("000000", 0),
 
 			Thumb = color4("FFFFFF", 100),
-			ThumbStroke = color4("000000", 20),
-			ThumbEffects = color4("FFFFFF", 80),
+			ThumbStroke = color4("000000", 2),
+			ThumbEffects = color4("FFFFFF", 100),
 		},
 
 		Button = {
-			Shadow = value(Color3.fromRGB(50, 50, 50)),
+			Shadow = value(Color3.fromRGB(0, 0, 0)),
 			FillPrimary = value(ColorSequence.new({
-				ColorSequenceKeypoint.new(0, Color3.fromRGB(72, 148, 255)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(10, 110, 255)),
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(43, 145, 255)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 122, 255)),
 			})),
 			FillSecondary = value(ColorSequence.new({
-				ColorSequenceKeypoint.new(0, Color3.fromRGB(60, 60, 60)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(55, 55, 55)),
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
 			})),
 		},
 
 		Stepper = {
-			Background = color4("373737", 100),
+			Background = color4("FFFFFF", 100),
 			Dropshadow = color4("000000", 100),
-			Separator = color4("FFFFFF", 10),
-			Filler = color4("FFFFFF", 4),
+			Separator = color4("000000", 22),
+			Filler = color4("000000", 5),
 			SegmentShadow = value(ColorSequence.new({
 				ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
 				ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
@@ -3951,16 +3950,16 @@ return {
 		},
 
 		RadioButtonGroup = {
-			Background = color4("373737", 100),
+			Background = color4("FFFFFF", 100),
 			Dot = color4("FFFFFF", 100),
-			Stroke = color4("000000", 20),
-			Overlay = color4("FFFFFF", 8),
-			InnerShadow = color4("FFFFFF", 10),
+			Stroke = color4("000000", 8),
+			Overlay = color4("FFFFFF", 17),
+			InnerShadow = color4("000000", 10),
 		},
 
 		MenuButton = {
-			IndicatorBackground = color4("FFFFFF", 10),
-			MenuBackground = color4("2C2C2E", 95),
+			IndicatorBackground = color4("000000", 10),
+			MenuBackground = color4("F6F6F6", 95),
 		},
 	},
 }
@@ -4011,9 +4010,9 @@ return {
 		Zoom = color4("28C840", 100),
 
 		SwitchAccent = color4("478CF6", 100),
-		Selection = color4("007AFF", 100),
-		SelectionStroke = color4("007AFF", 50),
-		SelectionFocused = color4("0A82FF", 100),
+		Selection = color4("007AFF", 100), -- Pink from apple.lua (User request)
+		SelectionStroke = color4("007AFF", 50), -- Pink
+		SelectionFocused = color4("0A82FF", 100), -- Pink
 		SelectionFocusedAccent = color4("FFFFFF", 85),
 
 		Sidebar = color4("EAEAEA", 84),
