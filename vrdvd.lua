@@ -1,4 +1,4 @@
--- GUI Toggle Icon for UI Control (FIXED VERSION)
+-- GUI Toggle Icon for UI Control (FIXED VERSION - Compatible with Cascade UI)
 -- Draggable icon button to show/hide the main UI
 
 local Players = game:GetService("Players")
@@ -18,7 +18,7 @@ ToggleGui.Parent = game:GetService("CoreGui")
 ToggleGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ToggleGui.ResetOnSpawn = false
 
--- Main icon button container (Changed to ImageButton for better click handling)
+-- Main icon button (Using ImageButton for click handling)
 local IconButton = Instance.new("ImageButton")
 IconButton.Name = "IconButton"
 IconButton.Size = UDim2.new(0, ICON_SIZE, 0, ICON_SIZE)
@@ -101,11 +101,11 @@ UserInputService.InputChanged:Connect(function(input)
     end
 end)
 
--- Click handling (Toggle UI)
+-- Click handling (Toggle UI) - FIXED: Separated from drag
 IconButton.MouseButton1Click:Connect(function()
     -- Only toggle if not dragged
     if not hasDragged then
-        -- Priority 1: Use Custom Callback
+        -- Priority 1: Use Custom Callback (Universal Method)
         if ToggleCallback then
             local success, err = pcall(function()
                 local isVisible = ToggleCallback()
@@ -135,6 +135,10 @@ IconButton.MouseButton1Click:Connect(function()
             warn("No Toggle Callback set and 'ChaLarmHub' not found.")
         end
     end
+    
+    -- Reset drag state after a short delay
+    task.wait(0.1)
+    hasDragged = false
 end)
 
 -- Hover effect
@@ -143,6 +147,10 @@ IconButton.MouseEnter:Connect(function()
         Transparency = 0,
         Thickness = 1
     }):Play()
+    TweenService:Create(Icon, TweenInfo.new(0.2), {
+        Size = UDim2.new(0.75, 0, 0.75, 0),
+        Position = UDim2.new(0.125, 0, 0.125, 0)
+    }):Play()
 end)
 
 IconButton.MouseLeave:Connect(function()
@@ -150,31 +158,45 @@ IconButton.MouseLeave:Connect(function()
         Transparency = 0.2,
         Thickness = 0.5
     }):Play()
+    TweenService:Create(Icon, TweenInfo.new(0.2), {
+        Size = UDim2.new(0.7, 0, 0.7, 0),
+        Position = UDim2.new(0.15, 0, 0.15, 0)
+    }):Play()
 end)
 
--- Return module
+-- Return module API (Compatible with your script pattern)
 return {
     ToggleGui = ToggleGui,
     IconButton = IconButton,
+    
+    -- Customization methods
     SetIcon = function(assetId)
         Icon.Image = assetId
     end,
+    
     SetColor = function(color)
         IconStroke.Color = color
     end,
+    
     SetPosition = function(position)
         IconButton.Position = position
     end,
+    
+    -- Callback system (PRIMARY METHOD - Used by your script)
     SetCallback = function(callback)
         ToggleCallback = callback
     end,
+    
+    -- State management (state = true means Minimized/Hidden)
     SetState = function(state)
-        uiVisible = state
-        local mainUI = game:GetService("CoreGui"):FindFirstChild("ChaLarmHub")
-        if mainUI then
-            mainUI.Enabled = state
-        end
+        uiVisible = not state -- Invert: if minimized (true), UI is not visible (false)
+        -- Update visual state: Minimized = darker, Visible = normal
+        TweenService:Create(IconButton, TweenInfo.new(0.2), {
+            BackgroundColor3 = state and Color3.fromRGB(40, 40, 45) or Color3.fromRGB(20, 20, 25)
+        }):Play()
     end,
+    
+    -- Manual toggle method (Fallback)
     ToggleUI = function()
         if ToggleCallback then
             local success, err = pcall(function()
@@ -185,7 +207,9 @@ return {
                     uiVisible = not uiVisible
                 end
             end)
-            if not success then warn("Toggle Callback Error:", err) end
+            if not success then 
+                warn("Toggle Callback Error:", err) 
+            end
             return
         end
 
