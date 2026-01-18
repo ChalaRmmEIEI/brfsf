@@ -1,3 +1,6 @@
+-- GUI Toggle Icon for UI Control
+-- Draggable icon button to show/hide the main UI
+
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -131,6 +134,10 @@ return {
     -- Add SetCallback for universal support
     SetCallback = function(callback)
         ToggleCallback = callback
+    end,
+    SetState = function(state)
+        uiVisible = state
+        -- Optional: Update visual state here if needed (e.g. transparency or image)
     end,
     ToggleUI = function()
         -- Priority 1: Use Custom Callback (Universal Method)
