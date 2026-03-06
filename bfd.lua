@@ -8,7 +8,7 @@ local RunService = game:GetService("RunService")
 
 -- Configuration
 local ICON_IMAGE = "rbxassetid://96083355749736" -- User specific icon
-local ICON_SIZE = 25 -- Smaller size
+local ICON_SIZE = 45 -- Smaller size
 local ICON_COLOR = Color3.fromRGB(127, 0, 255) -- Purple accent
 local ICON_POSITION = UDim2.new(0, 20, 0, 20) -- Top Left corner
 
