@@ -93,7 +93,7 @@ ClickButton.InputBegan:Connect(function(input)
                 
                 -- Only toggle if we didn't drag
                 if not hasDragged then
-                    local mainUI = game:GetService("CoreGui"):FindFirstChild("ChaLarmHub")
+                    local mainUI = game:GetService("CoreGui"):FindFirstChild("AxelHub")
                     if mainUI then
                         uiVisible = not uiVisible
                         mainUI.Enabled = uiVisible
@@ -155,13 +155,13 @@ return {
             return
         end
 
-        -- Priority 2: Default "ChaLarmHub" fallback
-        local mainUI = game:GetService("CoreGui"):FindFirstChild("ChaLarmHub")
+        -- Priority 2: Default "AxelHub" fallback
+        local mainUI = game:GetService("CoreGui"):FindFirstChild("AxelHub")
         if mainUI then
             uiVisible = not uiVisible
             mainUI.Enabled = uiVisible
         else
-            warn("No Toggle Callback set and 'ChaLarmHub' not found.")
+            warn("No Toggle Callback set and 'AxelHub' not found.")
         end
     end
 }
