@@ -1,4 +1,3 @@
--- GUI Toggle Icon for AxelHub (AxelHub Version - Compatible with Cascade UI)
 -- Draggable icon button to show/hide the main UI
 -- Based on iconcloseopen layout, customized for AxelHub style
 
