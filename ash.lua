@@ -1,5 +1,4 @@
 -- Draggable icon button to show/hide the main UI
--- Based on iconcloseopen layout, customized for AxelHub style
 
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
