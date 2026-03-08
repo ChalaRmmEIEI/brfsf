@@ -1,4 +1,3 @@
-
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -7,7 +6,7 @@ local CoreGui = game:GetService("CoreGui")
 return function(ToggleCallback)
     local ICON_IMAGE = "rbxassetid://96083355749736"
     local ICON_SIZE = 50
-    local ICON_POSITION = UDim2.new(0, 20, 0, 100) -- Below Roblox Logo
+    local ICON_POSITION = UDim2.new(0, 20, 0, 100)
     
     local Main = Instance.new("ScreenGui")
     Main.Name = "AxelHub_Toggle"
@@ -80,10 +79,6 @@ return function(ToggleCallback)
     Button.MouseButton1Click:Connect(function()
         if not hasDragged and ToggleCallback then
             ToggleCallback()
-            -- Add a small "pop" effect
-            TweenService:Create(Icon, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(0.8, 0, 0.8, 0)}):Play()
-            task.wait(0.2)
-            TweenService:Create(Icon, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = UDim2.new(1, 0, 1, 0)}):Play()
         end
     end)
     
